@@ -2,24 +2,35 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <title>Leitor de Livro PDF</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Baixar Livro PDF</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+            background: #f5f5f5;
+        }
+        a {
+            display: inline-block;
+            background: #4CAF50;
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            font-size: 18px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        a:hover {
+            background: #45a049;
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <h1>📚 Leitor de Livro PDF</h1>
-    </header>
 
-    <main>
-        <p>Abaixo você pode ler o livro que disponibilizamos:</p>
-        
-        <div class="pdf-container">
-            <iframe src="Como falar em público e encantar as pessoas (Dale Carnegie) (Z-Library) (1).pdf" frameborder="0"></iframe>
-        </div>
-    </main>
+    <h1>📚 Baixe o Livro PDF</h1>
+    <p>Clique no botão abaixo para baixar e ler o livro:</p>
 
-    <footer>
-        <p>&copy; 2025 - Seu Nome</p>
-    </footer>
+    <a href="seulivro.pdf" download>Clique aqui para baixar o PDF</a>
+
 </body>
 </html>

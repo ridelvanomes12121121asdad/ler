@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Leitor de PDF - A Arte da Guerra</title>
+    <title>Biblioteca Digital</title>
     <style>
         body {
             margin: 0;
@@ -18,6 +18,15 @@
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .book-section {
+            margin-bottom: 40px;
+            padding: 20px;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+        }
+        .book-section:last-child {
+            margin-bottom: 0;
         }
         .pdf-link {
             display: inline-block;
@@ -36,22 +45,50 @@
             margin: 20px 0;
             line-height: 1.6;
         }
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+        }
+        h2 {
+            color: #444;
+            margin-top: 0;
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>A Arte da Guerra</h1>
-        <div class="instructions">
-            <p>Para ler o livro no seu iPad:</p>
-            <ol>
-                <li>Clique no botão abaixo</li>
-                <li>O PDF será aberto no leitor nativo do iPad</li>
-                <li>Você poderá ler o livro completo com todas as funcionalidades do leitor de PDF do iPad</li>
-            </ol>
+        <h1>Biblioteca Digital</h1>
+        
+        <div class="book-section">
+            <h2>A Arte da Guerra</h2>
+            <div class="instructions">
+                <p>Para ler o livro no seu iPad:</p>
+                <ol>
+                    <li>Clique no botão abaixo</li>
+                    <li>O PDF será aberto no leitor nativo do iPad</li>
+                    <li>Você poderá ler o livro completo com todas as funcionalidades do leitor de PDF do iPad</li>
+                </ol>
+            </div>
+            <a href="A arte da guerra segundo os Seals da marinha norte-americana (Rob Roy  Chris Lawson [Roy, Rob  Lawson etc.) (Z-Library).pdf" class="pdf-link" target="_blank">
+                Abrir Livro
+            </a>
         </div>
-        <a href="A arte da guerra segundo os Seals da marinha norte-americana (Rob Roy  Chris Lawson [Roy, Rob  Lawson etc.) (Z-Library).pdf" class="pdf-link" target="_blank">
-            Abrir Livro
-        </a>
+
+        <div class="book-section">
+            <h2>Como Falar em Público e Encantar Pessoas</h2>
+            <div class="instructions">
+                <p>Para ler o livro no seu iPad:</p>
+                <ol>
+                    <li>Clique no botão abaixo</li>
+                    <li>O PDF será aberto no leitor nativo do iPad</li>
+                    <li>Você poderá ler o livro completo com todas as funcionalidades do leitor de PDF do iPad</li>
+                </ol>
+            </div>
+            <a href="Como falar em público e encantar as pessoas (Dale Carnegie) (Z-Library) (1).pdf" class="pdf-link" target="_blank">
+                Abrir Livro
+            </a>
+        </div>
     </div>
 </body>
 </html>

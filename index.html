@@ -7,19 +7,51 @@
     <style>
         body {
             margin: 0;
-            padding: 0;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
         }
-        iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .pdf-link {
+            display: inline-block;
+            padding: 15px 30px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 18px;
+            margin: 20px 0;
+        }
+        .pdf-link:hover {
+            background-color: #0056b3;
+        }
+        .instructions {
+            margin: 20px 0;
+            line-height: 1.6;
         }
     </style>
 </head>
 <body>
-    <iframe src="A arte da guerra segundo os Seals da marinha norte-americana (Rob Roy  Chris Lawson [Roy, Rob  Lawson etc.) (Z-Library).pdf" type="application/pdf"></iframe>
+    <div class="container">
+        <h1>A Arte da Guerra</h1>
+        <div class="instructions">
+            <p>Para ler o livro no seu iPad:</p>
+            <ol>
+                <li>Clique no botão abaixo</li>
+                <li>O PDF será aberto no leitor nativo do iPad</li>
+                <li>Você poderá ler o livro completo com todas as funcionalidades do leitor de PDF do iPad</li>
+            </ol>
+        </div>
+        <a href="A arte da guerra segundo os Seals da marinha norte-americana (Rob Roy  Chris Lawson [Roy, Rob  Lawson etc.) (Z-Library).pdf" class="pdf-link" target="_blank">
+            Abrir Livro
+        </a>
+    </div>
 </body>
 </html>

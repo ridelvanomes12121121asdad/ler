@@ -6,71 +6,100 @@
     <title>Biblioteca Digital</title>
     <style>
         :root {
-            --bg-color: #1a1a1a;
-            --container-bg: #2d2d2d;
-            --text-color: #ffffff;
-            --accent-color: #4CAF50;
-            --hover-color: #45a049;
-            --border-color: #404040;
-            --progress-bg: #404040;
-            --card-bg: #363636;
+            --bg-color: #f5f5f5;
+            --container-bg: #ffffff;
+            --text-color: #333333;
+            --accent-color: #2c3e50;
+            --hover-color: #34495e;
+            --border-color: #e0e0e0;
+            --card-bg: #ffffff;
+            --shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
 
         body {
             margin: 0;
             padding: 20px;
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', Arial, sans-serif;
             background-color: var(--bg-color);
             color: var(--text-color);
+            line-height: 1.6;
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            background-color: var(--container-bg);
             padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
         }
 
-        .book-section {
+        .header {
+            text-align: center;
             margin-bottom: 40px;
             padding: 20px;
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
+            background-color: var(--container-bg);
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+
+        .header h1 {
+            margin: 0;
+            color: var(--accent-color);
+            font-size: 2.5em;
+            font-weight: 300;
+        }
+
+        .books-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            padding: 20px 0;
+        }
+
+        .book-card {
             background-color: var(--card-bg);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            overflow: hidden;
         }
 
-        .book-section:last-child {
-            margin-bottom: 0;
-        }
-
-        .book-cover {
-            width: 200px;
-            height: 300px;
-            object-fit: cover;
-            border-radius: 8px;
-            margin-bottom: 20px;
+        .book-card:hover {
+            transform: translateY(-5px);
             box-shadow: 0 4px 8px rgba(0,0,0,0.2);
         }
 
-        .book-info {
+        .book-cover {
             width: 100%;
-            max-width: 600px;
+            height: 400px;
+            object-fit: cover;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .book-info {
+            padding: 20px;
+        }
+
+        .book-title {
+            margin: 0 0 10px 0;
+            color: var(--accent-color);
+            font-size: 1.4em;
+            font-weight: 500;
+        }
+
+        .book-actions {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
         }
 
         .pdf-link {
             display: inline-block;
-            padding: 15px 30px;
+            padding: 12px 20px;
             background-color: var(--accent-color);
             color: white;
             text-decoration: none;
             border-radius: 5px;
-            font-size: 18px;
-            margin: 20px 0;
+            text-align: center;
             transition: background-color 0.3s ease;
         }
 
@@ -78,231 +107,106 @@
             background-color: var(--hover-color);
         }
 
-        .instructions {
-            margin: 20px 0;
-            line-height: 1.6;
-            color: #cccccc;
-        }
-
-        h1 {
-            text-align: center;
-            color: var(--text-color);
-            margin-bottom: 30px;
-            font-size: 2.5em;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        }
-
-        h2 {
-            color: var(--text-color);
-            margin-top: 0;
-            text-align: center;
-            font-size: 1.8em;
-        }
-
-        .reading-controls {
-            margin-top: 20px;
-            padding: 15px;
-            background-color: var(--container-bg);
-            border-radius: 5px;
-            width: 100%;
-            max-width: 600px;
-        }
-
-        .progress-container {
-            margin: 10px 0;
-        }
-
-        .progress-bar {
-            width: 100%;
-            height: 20px;
-            background-color: var(--progress-bg);
-            border-radius: 10px;
-            overflow: hidden;
-        }
-
-        .progress-fill {
-            height: 100%;
-            background-color: var(--accent-color);
-            width: 0%;
-            transition: width 0.3s ease;
-        }
-
-        .progress-text {
-            margin-top: 5px;
-            font-size: 14px;
-            color: #cccccc;
-        }
-
         .mark-read-btn {
-            padding: 10px 20px;
-            background-color: var(--accent-color);
-            color: white;
-            border: none;
+            padding: 12px 20px;
+            background-color: #f8f9fa;
+            color: var(--accent-color);
+            border: 1px solid var(--accent-color);
             border-radius: 5px;
             cursor: pointer;
-            margin-top: 10px;
-            transition: background-color 0.3s ease;
+            transition: all 0.3s ease;
         }
 
         .mark-read-btn:hover {
-            background-color: var(--hover-color);
+            background-color: var(--accent-color);
+            color: white;
         }
 
         .mark-read-btn.read {
-            background-color: #666666;
+            background-color: #e8f5e9;
+            color: #2e7d32;
+            border-color: #2e7d32;
         }
 
         .reading-status {
             margin-top: 10px;
-            font-weight: bold;
-            color: var(--accent-color);
+            font-size: 0.9em;
+            color: #2e7d32;
+            text-align: center;
         }
 
-        input[type="range"] {
-            width: 100%;
-            margin: 10px 0;
-            background-color: var(--progress-bg);
-            height: 8px;
-            border-radius: 4px;
-            outline: none;
-            -webkit-appearance: none;
-        }
+        @media (max-width: 768px) {
+            .books-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                gap: 20px;
+            }
 
-        input[type="range"]::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            width: 20px;
-            height: 20px;
-            background-color: var(--accent-color);
-            border-radius: 50%;
-            cursor: pointer;
-        }
-
-        input[type="range"]::-moz-range-thumb {
-            width: 20px;
-            height: 20px;
-            background-color: var(--accent-color);
-            border-radius: 50%;
-            cursor: pointer;
-            border: none;
+            .book-cover {
+                height: 350px;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Biblioteca Digital</h1>
+        <div class="header">
+            <h1>Biblioteca Digital</h1>
+        </div>
         
-        <div class="book-section" data-book-id="amores-improvaveis">
-            <img src="img/amores-improvaveis.jpg" alt="Capa do livro Amores Improváveis 3" class="book-cover">
-            <div class="book-info">
-                <h2>Amores Improváveis 3 - O Jogo</h2>
-                <div class="instructions">
-                    <p>Para ler o livro no seu iPad:</p>
-                    <ol>
-                        <li>Clique no botão abaixo</li>
-                        <li>O PDF será aberto no leitor nativo do iPad</li>
-                        <li>Você poderá ler o livro completo com todas as funcionalidades do leitor de PDF do iPad</li>
-                    </ol>
-                </div>
-                <a href="(Amores Improváveis 3) O Jogo (Elle Kennedy [Kennedy, Elle]) (Z-Library).pdf" class="pdf-link" target="_blank">
-                    Abrir Livro
-                </a>
-                <div class="reading-controls">
-                    <div class="progress-container">
-                        <div class="progress-bar">
-                            <div class="progress-fill" data-progress="0"></div>
-                        </div>
-                        <div class="progress-text">Progresso: 0%</div>
+        <div class="books-grid">
+            <div class="book-card" data-book-id="amores-improvaveis">
+                <img src="img/amores-improvaveis.jpg" alt="Capa do livro Amores Improváveis 3" class="book-cover">
+                <div class="book-info">
+                    <h2 class="book-title">Amores Improváveis 3 - O Jogo</h2>
+                    <div class="book-actions">
+                        <a href="(Amores Improváveis 3) O Jogo (Elle Kennedy [Kennedy, Elle]) (Z-Library).pdf" class="pdf-link" target="_blank">
+                            Abrir Livro
+                        </a>
+                        <button class="mark-read-btn" onclick="toggleRead(this)">Marcar como Lido</button>
+                        <div class="reading-status"></div>
                     </div>
-                    <input type="range" min="0" max="100" value="0" class="progress-slider" onchange="updateProgress(this)">
-                    <button class="mark-read-btn" onclick="toggleRead(this)">Marcar como Lido</button>
-                    <div class="reading-status"></div>
                 </div>
             </div>
-        </div>
 
-        <div class="book-section" data-book-id="modelos">
-            <img src="img/modelos.jpg" alt="Capa do livro Modelos" class="book-cover">
-            <div class="book-info">
-                <h2>Modelos - Atraia mulheres através da honestidade</h2>
-                <div class="instructions">
-                    <p>Para ler o livro no seu iPad:</p>
-                    <ol>
-                        <li>Clique no botão abaixo</li>
-                        <li>O PDF será aberto no leitor nativo do iPad</li>
-                        <li>Você poderá ler o livro completo com todas as funcionalidades do leitor de PDF do iPad</li>
-                    </ol>
-                </div>
-                <a href="Modelos - Atraia mulheres atraves da honestidade traduzido (Mark Manson) (Z-Library).pdf" class="pdf-link" target="_blank">
-                    Abrir Livro
-                </a>
-                <div class="reading-controls">
-                    <div class="progress-container">
-                        <div class="progress-bar">
-                            <div class="progress-fill" data-progress="0"></div>
-                        </div>
-                        <div class="progress-text">Progresso: 0%</div>
+            <div class="book-card" data-book-id="modelos">
+                <img src="img/modelos.jpg" alt="Capa do livro Modelos" class="book-cover">
+                <div class="book-info">
+                    <h2 class="book-title">Modelos - Atraia mulheres através da honestidade</h2>
+                    <div class="book-actions">
+                        <a href="Modelos - Atraia mulheres atraves da honestidade traduzido (Mark Manson) (Z-Library).pdf" class="pdf-link" target="_blank">
+                            Abrir Livro
+                        </a>
+                        <button class="mark-read-btn" onclick="toggleRead(this)">Marcar como Lido</button>
+                        <div class="reading-status"></div>
                     </div>
-                    <input type="range" min="0" max="100" value="0" class="progress-slider" onchange="updateProgress(this)">
-                    <button class="mark-read-btn" onclick="toggleRead(this)">Marcar como Lido</button>
-                    <div class="reading-status"></div>
                 </div>
             </div>
-        </div>
 
-        <div class="book-section" data-book-id="piadas">
-            <img src="img/piadas.jpg" alt="Capa do livro de piadas" class="book-cover">
-            <div class="book-info">
-                <h2>Livro de Piadas de A a Z</h2>
-                <div class="instructions">
-                    <p>Para ler o livro no seu iPad:</p>
-                    <ol>
-                        <li>Clique no botão abaixo</li>
-                        <li>O PDF será aberto no leitor nativo do iPad</li>
-                        <li>Você poderá ler o livro completo com todas as funcionalidades do leitor de PDF do iPad</li>
-                    </ol>
-                </div>
-                <a href="Livro de piadas de A a Z (anonymous) (Z-Library).pdf" class="pdf-link" target="_blank">
-                    Abrir Livro
-                </a>
-                <div class="reading-controls">
-                    <div class="progress-container">
-                        <div class="progress-bar">
-                            <div class="progress-fill" data-progress="0"></div>
-                        </div>
-                        <div class="progress-text">Progresso: 0%</div>
+            <div class="book-card" data-book-id="piadas">
+                <img src="img/piadas.jpg" alt="Capa do livro de piadas" class="book-cover">
+                <div class="book-info">
+                    <h2 class="book-title">Livro de Piadas de A a Z</h2>
+                    <div class="book-actions">
+                        <a href="Livro de piadas de A a Z (anonymous) (Z-Library).pdf" class="pdf-link" target="_blank">
+                            Abrir Livro
+                        </a>
+                        <button class="mark-read-btn" onclick="toggleRead(this)">Marcar como Lido</button>
+                        <div class="reading-status"></div>
                     </div>
-                    <input type="range" min="0" max="100" value="0" class="progress-slider" onchange="updateProgress(this)">
-                    <button class="mark-read-btn" onclick="toggleRead(this)">Marcar como Lido</button>
-                    <div class="reading-status"></div>
                 </div>
             </div>
-        </div>
 
-        <div class="book-section" data-book-id="mil-e-uma-noites">
-            <img src="img/mil-e-uma-noites.jpg" alt="Capa do livro Mil e Uma Noites" class="book-cover">
-            <div class="book-info">
-                <h2>Livro das Mil e Uma Noites - Volume 1</h2>
-                <div class="instructions">
-                    <p>Para ler o livro no seu iPad:</p>
-                    <ol>
-                        <li>Clique no botão abaixo</li>
-                        <li>O PDF será aberto no leitor nativo do iPad</li>
-                        <li>Você poderá ler o livro completo com todas as funcionalidades do leitor de PDF do iPad</li>
-                    </ol>
-                </div>
-                <a href="Livro das mil e uma noites - Vol. 1 (Anônimo) (Z-Library).pdf" class="pdf-link" target="_blank">
-                    Abrir Livro
-                </a>
-                <div class="reading-controls">
-                    <div class="progress-container">
-                        <div class="progress-bar">
-                            <div class="progress-fill" data-progress="0"></div>
-                        </div>
-                        <div class="progress-text">Progresso: 0%</div>
+            <div class="book-card" data-book-id="mil-e-uma-noites">
+                <img src="img/mil-e-uma-noites.jpg" alt="Capa do livro Mil e Uma Noites" class="book-cover">
+                <div class="book-info">
+                    <h2 class="book-title">Livro das Mil e Uma Noites - Volume 1</h2>
+                    <div class="book-actions">
+                        <a href="Livro das mil e uma noites - Vol. 1 (Anônimo) (Z-Library).pdf" class="pdf-link" target="_blank">
+                            Abrir Livro
+                        </a>
+                        <button class="mark-read-btn" onclick="toggleRead(this)">Marcar como Lido</button>
+                        <div class="reading-status"></div>
                     </div>
-                    <input type="range" min="0" max="100" value="0" class="progress-slider" onchange="updateProgress(this)">
-                    <button class="mark-read-btn" onclick="toggleRead(this)">Marcar como Lido</button>
-                    <div class="reading-status"></div>
                 </div>
             </div>
         </div>
@@ -311,24 +215,15 @@
     <script>
         // Função para carregar o estado salvo dos livros
         function loadBookStates() {
-            document.querySelectorAll('.book-section').forEach(section => {
-                const bookId = section.dataset.bookId;
+            document.querySelectorAll('.book-card').forEach(card => {
+                const bookId = card.dataset.bookId;
                 const savedState = localStorage.getItem(`book_${bookId}`);
                 
                 if (savedState) {
                     const state = JSON.parse(savedState);
-                    const progressFill = section.querySelector('.progress-fill');
-                    const progressText = section.querySelector('.progress-text');
-                    const progressSlider = section.querySelector('.progress-slider');
-                    const markReadBtn = section.querySelector('.mark-read-btn');
-                    const readingStatus = section.querySelector('.reading-status');
+                    const markReadBtn = card.querySelector('.mark-read-btn');
+                    const readingStatus = card.querySelector('.reading-status');
 
-                    // Atualiza o progresso
-                    progressFill.style.width = `${state.progress}%`;
-                    progressText.textContent = `Progresso: ${state.progress}%`;
-                    progressSlider.value = state.progress;
-
-                    // Atualiza o status de leitura
                     if (state.read) {
                         markReadBtn.classList.add('read');
                         markReadBtn.textContent = 'Lido';
@@ -338,32 +233,14 @@
             });
         }
 
-        // Função para atualizar o progresso
-        function updateProgress(slider) {
-            const section = slider.closest('.book-section');
-            const bookId = section.dataset.bookId;
-            const progress = slider.value;
-            const progressFill = section.querySelector('.progress-fill');
-            const progressText = section.querySelector('.progress-text');
-
-            progressFill.style.width = `${progress}%`;
-            progressText.textContent = `Progresso: ${progress}%`;
-
-            // Salva o estado
-            const savedState = localStorage.getItem(`book_${bookId}`);
-            const state = savedState ? JSON.parse(savedState) : { progress: 0, read: false };
-            state.progress = parseInt(progress);
-            localStorage.setItem(`book_${bookId}`, JSON.stringify(state));
-        }
-
         // Função para marcar como lido/não lido
         function toggleRead(button) {
-            const section = button.closest('.book-section');
-            const bookId = section.dataset.bookId;
-            const readingStatus = section.querySelector('.reading-status');
+            const card = button.closest('.book-card');
+            const bookId = card.dataset.bookId;
+            const readingStatus = card.querySelector('.reading-status');
             
             const savedState = localStorage.getItem(`book_${bookId}`);
-            const state = savedState ? JSON.parse(savedState) : { progress: 0, read: false };
+            const state = savedState ? JSON.parse(savedState) : { read: false };
             
             state.read = !state.read;
             
